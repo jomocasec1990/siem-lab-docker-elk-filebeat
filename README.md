@@ -53,29 +53,21 @@ cd docker/
 sudo docker compose up -d
 ```
 
-To validate services are up and vms created succesfuly:
+To validate services are up and vms were created succesfuly:
 
 ```bash
 ss -tuln | grep 5601
-```
-
-```
 tcp   LISTEN 0      4096                            0.0.0.0:5601        0.0.0.0:*
 tcp   LISTEN 0      4096                               [::]:5601           [::]:*
 ```
 
 ```bash
 ss -tuln | grep 9200
-```
-
-```
 tcp   LISTEN 0      4096                            0.0.0.0:9200        0.0.0.0:*
 tcp   LISTEN 0      4096                               [::]:9200           [::]:*
+```
 ```bash
 sudo docker ps
-```
-
-```
 CONTAINER ID   IMAGE                                                          COMMAND                  CREATED       STATUS       PORTS                                                   NAMES
 678d801df404   docker.elastic.co/kibana/kibana:7.15.0                         "/bin/tini -- /usr/l…"   9 hours ago   Up 9 hours   0.0.0.0:5601->5601/tcp, [::]:5601->5601/tcp             elasticsearch-kibana-1
 9c2558ea5803   docker.elastic.co/enterprise-search/enterprise-search:7.15.0   "/bin/tini -- /usr/l…"   9 hours ago   Up 9 hours   0.0.0.0:3002->3002/tcp, [::]:3002->3002/tcp             elasticsearch-ent-search-1
