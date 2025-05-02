@@ -86,7 +86,7 @@ Access Kibana via browser at: `http://192.168.0.100:5601`
 
 ---
 
-## 📄 4. Install and Configure Filebeat (on same VM)
+## 📄 4. Install and Configure Filebeat
 
 ### 🔽 Download and install:
 
