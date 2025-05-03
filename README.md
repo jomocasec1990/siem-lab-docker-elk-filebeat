@@ -6,6 +6,15 @@ The goal is to build a fully functional **SOC (Security Operations Center)** whe
 
 ---
 
+## 🔗 Project Phases
+
+- ✅ [Part 1: Elasticsearch, Kibana, and Filebeat](./README.md)
+- 🔄 [Part 2: MISP Threat Intelligence](./misp/README.md) 
+- 🔜 [Part 3: Cortex Automated Analysis](./cortex/README.md)
+- 🔜 Part 4: TheHive for Case Management
+
+---
+
 ## 📑 Table of Contents
 
 - [🐧 1. Prerequisites and System Preparation](#-1-prerequisites-and-system-preparation)
