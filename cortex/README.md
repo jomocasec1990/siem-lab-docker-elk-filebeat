@@ -1,7 +1,15 @@
+# 🧠 Cortex Lab - Elasticsearch + Cortex Setup
 
-# 🧠 Cortex Lab - Part 1: Elasticsearch Setup for Cortex
+This document covers the full process of preparing **Elasticsearch** and installing **Cortex** in a SOC lab environment. This setup enables automated analysis workflows using Cortex with Elasticsearch as its backend.
 
-This is the first part of the hands-on SOC lab focused on installing and preparing **Elasticsearch** for use with **Cortex**.
+---
+
+## 🧰 Lab Objectives
+
+- ✅ Install and configure Elasticsearch as the backend for Cortex.
+- ✅ Add the required repositories and keys.
+- ✅ Install and configure Cortex to connect to the Elasticsearch instance.
+- ✅ Verify that both services are up and communicating correctly.
 
 ---
 
@@ -12,22 +20,17 @@ sudo apt update
 sudo apt install openjdk-11-jre-headless -y
 ```
 
-Add the Elasticsearch GPG key:
+Add Elasticsearch GPG key and repository:
 
 ```bash
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-```
-
-Add the Elasticsearch repository:
-
-```bash
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+sudo apt update
 ```
 
-Update package index and install:
+Install Elasticsearch:
 
 ```bash
-sudo apt update
 sudo apt install elasticsearch -y
 ```
 
@@ -41,7 +44,7 @@ Edit the Elasticsearch config file:
 sudo nano /etc/elasticsearch/elasticsearch.yml
 ```
 
-Make sure the following lines are set (add or uncomment if needed):
+Apply the following configuration:
 
 ```yaml
 network.host: 0.0.0.0
@@ -55,7 +58,7 @@ thread_pool.search.queue_size: 100000
 
 ---
 
-## ▶️ 3. Start and Enable Elasticsearch
+## ▶️ 3. Start Elasticsearch
 
 ```bash
 sudo systemctl enable elasticsearch.service
@@ -64,9 +67,9 @@ sudo systemctl start elasticsearch.service
 
 ---
 
-## 🔐 4. Install Cortex and Dependencies
+## 🛠️ 4. Install Cortex
 
-Add Cortex GPG Key and Repository:
+Add the GPG key and repository:
 
 ```bash
 wget -qO- https://raw.githubusercontent.com/TheHive-Project/TheHive/master/PGP-PUBLIC-KEY | sudo gpg --dearmor -o /usr/share/keyrings/thehive-project-archive-keyring.gpg
@@ -74,7 +77,7 @@ echo "deb [signed-by=/usr/share/keyrings/thehive-project-archive-keyring.gpg] ht
 sudo apt update
 ```
 
-Install Cortex:
+Install Cortex and dependencies:
 
 ```bash
 sudo apt install cortex -y
@@ -82,47 +85,27 @@ sudo apt install cortex -y
 
 ---
 
-## ⚙️ 5. Cortex Configuration
+## ⚙️ 5. Configure Cortex
 
-### Locate Configuration Directory
+Go to the configuration directory:
 
 ```bash
 cd /etc/cortex
-ls
 ```
 
-Files present:
-
-- `application.conf`
-- `logback.xml`
-
-### View and Edit Configuration
+Edit the `application.conf` file:
 
 ```bash
-sudo nano /etc/cortex/application.conf
+sudo nano application.conf
 ```
 
-Update the Elasticsearch URI to match the correct host (e.g. another VM):
+Update the Elasticsearch URI:
 
 ```hocon
 uri = "http://192.168.0.102:9200"
 ```
 
-### Generate and Add Secret Key
-
-Generate key:
-
-```bash
-cat << _EOF_
-# Secret key
-# ~~~~~~~
-# The secret key is used to secure cryptographic functions.
-# If you deploy your application to several instances be sure to use the same key!
-play.http.secret.key="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1)"
-_EOF_
-```
-
-Append manually or add directly to the config file:
+Generate and add a secret key:
 
 ```bash
 (cat << _EOF_
@@ -137,7 +120,7 @@ _EOF_
 
 ---
 
-## 🚀 6. Start and Verify Cortex
+## 🚀 6. Start Cortex
 
 ```bash
 sudo systemctl start cortex
@@ -146,7 +129,7 @@ sudo systemctl status cortex
 
 Expected output:
 
-```
+```bash
 ● cortex.service - cortex
      Loaded: loaded (...)
      Active: active (running)
@@ -154,11 +137,18 @@ Expected output:
 
 ---
 
-## 🔍 7. Port Verification
+## 🧪 7. Port Verification
 
-Ensure both services are listening:
+Make sure both services are up:
 
 ```bash
 ss -tuln | grep 9200
 ss -tuln | grep 9001
 ```
+
+---
+
+## 📎 Notes
+
+- Elasticsearch must be reachable from the Cortex host.
+- If deploying Cortex in a distributed environment, reuse the same `play.http.secret.key`.
