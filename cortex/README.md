@@ -1,15 +1,17 @@
-# 🧠 Cortex Lab - Elasticsearch + Cortex Setup
 
-This document covers the full process of preparing **Elasticsearch** and installing **Cortex** in a SOC lab environment. This setup enables automated analysis workflows using Cortex with Elasticsearch as its backend.
+# 🧠 Cortex Lab - Full Installation 
+
+This document explains the full installation process of **Elasticsearch** and **Cortex** for a Security Operations Center (SOC) lab setup. It includes the core setup and optional configuration for local analyzers.
 
 ---
 
-## 🧰 Lab Objectives
+## 🧰 Lab Overview
 
-- ✅ Install and configure Elasticsearch as the backend for Cortex.
-- ✅ Add the required repositories and keys.
-- ✅ Install and configure Cortex to connect to the Elasticsearch instance.
-- ✅ Verify that both services are up and communicating correctly.
+- OS: Ubuntu 20.04.6 LTS (x86_64)
+- Cortex Version: 3.1.8-1
+- Elasticsearch Version: 7.x
+- IP Address: 192.168.0.102
+- Analyzer Path: /opt/cortex/Cortex-Analyzers/analyzers
 
 ---
 
@@ -124,6 +126,7 @@ _EOF_
 
 ```bash
 sudo systemctl start cortex
+sudo systemctl enable cortex  # Optional
 sudo systemctl status cortex
 ```
 
@@ -137,9 +140,7 @@ Expected output:
 
 ---
 
-## 🧪 7. Port Verification
-
-Make sure both services are up:
+## 🔍 7. Verify Listening Ports
 
 ```bash
 ss -tuln | grep 9200
@@ -148,7 +149,34 @@ ss -tuln | grep 9001
 
 ---
 
-## 📎 Notes
+## 🧪 8. Clone Cortex Analyzers
 
-- Elasticsearch must be reachable from the Cortex host.
-- If deploying Cortex in a distributed environment, reuse the same `play.http.secret.key`.
+```bash
+sudo apt-get install -y --no-install-recommends \
+  python3-pip python3-dev ssdeep libfuzzy-dev libfuzzy2 \
+  libimage-exiftool-perl libmagic1 build-essential git libssl-dev
+
+sudo pip3 install -U pip setuptools
+
+cd /opt/cortex
+sudo git clone https://github.com/TheHive-Project/Cortex-Analyzers
+```
+
+Update `application.conf` to include the analyzers path:
+
+```hocon
+analyzer {
+  urls = [
+    "/opt/cortex/Cortex-Analyzers/analyzers"
+  ]
+}
+```
+
+---
+
+## 📌 Final Notes
+
+- Ensure Elasticsearch is running before starting Cortex.
+- Keep the same secret key across Cortex instances in a distributed setup.
+- Use local analyzers path to avoid external dependencies if preferred.
+
