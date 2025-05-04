@@ -149,7 +149,9 @@ ss -tuln | grep 9001
 
 ---
 
-## 🧪 8. Clone Cortex Analyzers
+## 🧪 8. Download Cortex Analyzers
+
+To enable automated analysis tasks in Cortex (like scanning IPs, hashes, URLs, etc.), you need to download the official set of analyzer scripts provided by TheHive Project.
 
 ```bash
 sudo apt-get install -y --no-install-recommends \
