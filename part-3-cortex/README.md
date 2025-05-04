@@ -51,7 +51,7 @@ Apply the following configuration:
 ```yaml
 network.host: 0.0.0.0
 http.port: 9200
-discovery.seed_hosts: []
+discovery.seed_hosts: ["host1, "host2"]
 node.name: node1
 cluster.initial_master_nodes: ["node1"]
 cluster.name: hive
