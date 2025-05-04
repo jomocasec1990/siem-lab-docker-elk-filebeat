@@ -115,7 +115,7 @@ Generate and add a secret key:
 # ~~~~~~~
 # The secret key is used to secure cryptographic functions.
 # If you deploy your application to several instances be sure to use the same key!
-play.http.secret.key="6uZA3OFfAtPggbVYQSS07Lo4zncb636hP6yepsnDgvKnmNYBznn4kRAjVUXe9wDm"
+play.http.secret.key="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1)"
 _EOF_
 ) | sudo tee -a /etc/cortex/application.conf
 ```
