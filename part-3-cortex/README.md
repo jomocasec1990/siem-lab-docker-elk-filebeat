@@ -19,7 +19,7 @@ This document explains the full installation process of **Elasticsearch** and **
 
 ```bash
 sudo apt update
-sudo apt install openjdk-11-jre-headless -y
+sudo apt install openjdk-8-jre-headless -y
 ```
 
 Add Elasticsearch GPG key and repository:
