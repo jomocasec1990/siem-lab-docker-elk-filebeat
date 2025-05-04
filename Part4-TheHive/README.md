@@ -189,6 +189,6 @@ http://<your-server-ip>:9000
 
 You should see the TheHive login page:
 
-![TheHive Login Page](thehive.png)
+![TheHive Login Page](screenshots/thehive.png)
 
 This confirms that the web service is reachable and fully operational.
