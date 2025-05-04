@@ -49,7 +49,7 @@ sudo nano /etc/elasticsearch/elasticsearch.yml
 Apply the following configuration:
 
 ```yaml
-network.host: 0.0.0.0
+network.host: 0.0.0.0 -> Private IP
 http.port: 9200
 discovery.seed_hosts: ["host1, "host2"]
 node.name: node1
