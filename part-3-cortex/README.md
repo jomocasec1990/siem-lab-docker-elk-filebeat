@@ -164,14 +164,40 @@ cd /opt/cortex
 sudo git clone https://github.com/TheHive-Project/Cortex-Analyzers
 ```
 
-Update `application.conf` to include the analyzers path:
+---
+
+## ⚙️ 9. Install and Configure Analyzers
+
+Install Python dependencies for the analyzers:
+
+```bash
+cd /opt/cortex
+for I in $(find Cortex-Analyzers -name 'requirements.txt'); do sudo -H pip install -r $I; done
+for I in $(find Cortex-Analyzers -name 'requirements.txt'); do sudo -H pip3 install -r $I || true; done
+```
+
+Edit `application.conf` and add the local analyzer path:
+
+```bash
+sudo nano /etc/cortex/application.conf
+```
+
+Add this section:
 
 ```hocon
 analyzer {
   urls = [
+    # "https://download.thehive-project.org/analyzers.json"
     "/opt/cortex/Cortex-Analyzers/analyzers"
   ]
 }
+```
+
+Restart Cortex to apply changes:
+
+```bash
+sudo systemctl restart cortex
+sudo systemctl status cortex
 ```
 
 ---
@@ -181,4 +207,3 @@ analyzer {
 - Ensure Elasticsearch is running before starting Cortex.
 - Keep the same secret key across Cortex instances in a distributed setup.
 - Use local analyzers path to avoid external dependencies if preferred.
-
