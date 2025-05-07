@@ -172,7 +172,7 @@ Install Python dependencies for the analyzers:
 
 ```bash
 cd /opt/cortex
-for I in $(find Cortex-Analyzers -name 'requirements.txt'); do sudo -H pip install -r $I; done
+for I in $(find Cortex-Analyzers -name 'requirements.txt'); do sudo -H pip install -r $I; done  && \
 for I in $(find Cortex-Analyzers -name 'requirements.txt'); do sudo -H pip3 install -r $I || true; done
 ```
 
