@@ -75,7 +75,6 @@ All phases include screenshots and validation outputs in the [`screenshots/`](./
 
 ---
 
-## 🧠 Author
 
 **Jordan Moran Cabello**  
 TAC Engineer | Cloud Security & SOC Enthusiast  
@@ -83,6 +82,3 @@ GitHub: [@jomocasec1990](https://github.com/jomocasec1990)
 
 ---
 
-## 🗂️ License
-
-This project is released under the MIT License. Use it freely for learning and internal training.
