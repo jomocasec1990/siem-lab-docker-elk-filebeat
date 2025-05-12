@@ -35,7 +35,6 @@ You will learn how to **collect, enrich, analyze, and respond to threats** using
 - **MISP (Malware Information Sharing Platform)**
 - **Cortex (for automated enrichment & response)**
 - **TheHive (case management & alerting)**
-- **Python (MISP API automation)**
 
 ---
 
