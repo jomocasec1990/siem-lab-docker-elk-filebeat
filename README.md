@@ -1,48 +1,49 @@
-# 🛡️ Elastic SIEM Lab - Full Environment Setup with Docker, Filebeat & Threat Intelligence
 
-This repository contains a **hands-on cybersecurity lab** designed to simulate a **real-world Security Operations Center (SOC)** environment using **open-source tools** like:
+# 🛡️ SOC Threat Intelligence Lab (Elasticsearch, MISP, Cortex, TheHive)
 
-- **Elasticsearch, Kibana, Filebeat** – for log collection and visualization  
-- **MISP (Malware Information Sharing Platform)** – for threat intelligence sharing  
-- **Cortex** – for automated response and enrichment  
-- **TheHive** – for case management and incident tracking  
+This repository documents a hands-on cybersecurity lab simulating a **Security Operations Center (SOC) workflow**, using a fully containerized environment with **Elasticsearch, MISP, Cortex, and TheHive**.
 
-The goal is to provide **a full detection, investigation, and response pipeline** that replicates the tools and workflow of a modern SOC.
+You will learn how to **collect, enrich, analyze, and respond to threats** using real-world techniques and open-source tools.
 
 ---
 
-## 🧭 Project Structure
+## 🎯 Purpose of This Lab
 
-Each phase is separated into its own directory with a dedicated `README.md`, step-by-step instructions, configurations, and screenshots.
+- Build a SOC simulation using open-source technologies.
+- Integrate log collection (Filebeat, Elasticsearch, Kibana) with Threat Intelligence (MISP).
+- Automate response with Cortex.
+- Manage incidents with TheHive.
+  
+---
 
-| Phase | Description |
+## 🗂️ Lab Structure
+
+| Part | Description |
 |-------|-------------|
-| 🔹 [`Part 1 - ELK & Filebeat`](./README.md) | Set up Elasticsearch, Kibana, and Filebeat using Docker |
-| 🔸 [`Part 2 - MISP`](./misp/README.md) | Install and configure MISP for threat intelligence sharing |
-| 🧠 [`Part 3 - Cortex`](./cortext/README.md) | Prepare Elasticsearch and install Cortex for automated analysis |
-| 🧾 [`Part 4 - TheHive`](./thehive/) | (Coming Soon) Case management and incident correlation |
+| **Part 1** | [ELK Stack & Filebeat Setup](./README.md) – Deploy Elasticsearch, Kibana, Filebeat via Docker. |
+| **Part 2** | [MISP Deployment & Threat Intelligence Workflow](./misp/README.md) – Install MISP, create events, tags, galaxies, attributes & objects. |
+| **Part 3** | [Cortex Installation & TheHive Integration](./cortex/README.md) – Install Cortex, configure analyzers, integrate with TheHive. |
+| **Part 4** | [TheHive Setup for Incident Response](./thehive/README.md) – Case management setup, users, profiles, organizations. |
+| **Part 5** | [TheHive Integration with Elasticsearch - Webhook Alerts](./thehiveintegration/README.md) – Send alerts from SIEM to TheHive using API webhooks. |
 
 ---
 
-## 🛠️ Technologies Used
+## 🧰 Technologies Used
 
 - **Docker & Docker Compose**
-- **Linux (Ubuntu)**
-- **PowerShell (Hyper-V scripting)**
-- **SIEM components**: Elasticsearch, Kibana, Logstash, Filebeat
-- **Threat Intel**: MISP
-- **Automation & Response**: Cortex
-- **Case Management**: TheHive
+- **Elasticsearch, Kibana, Filebeat**
+- **MISP (Malware Information Sharing Platform)**
+- **Cortex (for automated enrichment & response)**
+- **TheHive (case management & alerting)**
+- **Python (MISP API automation)**
 
 ---
 
-## ⚙️ Lab Deployment Options
+## 🚀 Deployment Options
 
-This lab can be deployed in various environments:
-
-- ✅ **Local virtual machines (Hyper-V / VirtualBox)**
-- ✅ **Cloud virtual machines (Azure / AWS)**
-- ✅ **Bare-metal server**
+- Local virtual machines (Hyper-V / VirtualBox)
+- Cloud VMs (Azure, AWS)
+- Bare-metal servers
 
 ---
 
@@ -69,16 +70,18 @@ This script will:
 
 ---
 
-## 📸 Screenshots
+## 📸 Visual Documentation
 
-All phases include screenshots and validation outputs in the [`screenshots/`](./screenshots/) folder.
+Each lab step includes:
+- Screenshots
+- Command examples
+- API requests & responses
+- Realistic threat intelligence scenarios
 
 ---
 
+## 📝 Author
 
 **Jordan Moran Cabello**  
-TAC Engineer | Cloud Security & SOC Enthusiast  
+SOC Engineer & Threat Intel Lab Developer  
 GitHub: [@jomocasec1990](https://github.com/jomocasec1990)
-
----
-
