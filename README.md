@@ -83,5 +83,4 @@ Each lab step includes:
 ## 📝 Author
 
 **Jordan Moran Cabello**  
-SOC Engineer & Threat Intel Lab Developer  
 GitHub: [@jomocasec1990](https://github.com/jomocasec1990)
