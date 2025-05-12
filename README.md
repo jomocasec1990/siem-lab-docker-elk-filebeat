@@ -20,11 +20,11 @@ You will learn how to **collect, enrich, analyze, and respond to threats** using
 
 | Part | Description |
 |-------|-------------|
-| **Part 1** | [ELK Stack & Filebeat Setup](./README.md) – Deploy Elasticsearch, Kibana, Filebeat via Docker. |
-| **Part 2** | [MISP Deployment & Threat Intelligence Workflow](./misp/README.md) – Install MISP, create events, tags, galaxies, attributes & objects. |
-| **Part 3** | [Cortex Installation & TheHive Integration](./cortex/README.md) – Install Cortex, configure analyzers, integrate with TheHive. |
-| **Part 4** | [TheHive Setup for Incident Response](./thehive/README.md) – Case management setup, users, profiles, organizations. |
-| **Part 5** | [TheHive Integration with Elasticsearch - Webhook Alerts](./thehiveintegration/README.md) – Send alerts from SIEM to TheHive using API webhooks. |
+| **Part 1** | [ELK Stack & Filebeat Setup](./01-elk-filebeat/README.md) 
+| **Part 2** | [MISP Deployment](./02-misp-setup/README.md) 
+| **Part 3** | [Cortex Installation](./03-cortex-setup/README.md) 
+| **Part 4** | [TheHive Setup for Incident Response](./04-TheHive-setup/README.md) 
+| **Part 5** | [TheHive Integration with Elasticsearch - Webhook Alerts](./05-TheHiveIntegratioin-ELK/README.md) 
 
 ---
 
